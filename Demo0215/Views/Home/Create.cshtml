@@ -1,0 +1,52 @@
+﻿@model Demo0215.Models.EmployeeModels
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+    <div class="row row-cols-2"> @Html.LabelFor(model => model.EmpNo)</div>
+    <div><input type="text" id="txtEmpNo" value="" placeholder="請輸入電腦編號..." required  /></div>
+    <div class="row row-cols-2">@Html.LabelFor(model => model.Name)</div>
+    <div><input type="text" id="txtName" value="" placeholder="請輸入姓名" required /></div>
+    <div class="row row-cols-2">@Html.LabelFor(model => model.Exp)</div>
+    <div><input type="number" id="txtExp" min="1" max="9999" value="" placeholder="輸入分機" required/></div>
+
+
+    <input type="submit" class="btn btn-primary"  value="新增" onclick="CreateEmp()" />
+
+
+    @section Scripts {
+        <script>
+            function CreateEmp() {
+                    $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("CreatePost")',
+                    data: { 'EmpNo': $("#txtEmpNo").val(), 'Name': $("#txtName").val(), 'Exp': $("#txtExp").val() },
+                        success: function (r) {
+                        if (r.IsSuccess) {
+                            alert('新增成功, 回首頁檢視');
+                        }
+                            else {
+                                alert(r.Msg);
+                            }
+                        },
+
+                    error: function (a, b, c) {
+                        console.log(a);
+                        console.log(b);
+                        console.log(c);
+                    }
+                });
+            }
+        </script>
+      }
+
+
+
+
+
+
+

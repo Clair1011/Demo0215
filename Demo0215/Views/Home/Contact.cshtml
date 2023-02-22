@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<h4>Session</h4>
+@Session["D1"]
+<h4>Bag</h4>
+@ViewBag.D1
+<h4>ViewData</h4>
+@ViewData["D1"]
+<h4>TempData</h4>
+@TempData["D1"]
+
+<address>
+    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>

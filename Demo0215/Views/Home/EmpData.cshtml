@@ -1,0 +1,28 @@
+﻿
+@model List<Demo0215.Models.EmployeeModels>
+
+<table class="table table-bordered table-responsive">
+    <tr>
+        <th class="text-center">@Html.LabelFor(model => model.FirstOrDefault().EmpNo) </th>
+        <th class="text-center">@Html.LabelFor(model => model.FirstOrDefault().Name) </th>
+        <th class="text-center">@Html.LabelFor(model => model.FirstOrDefault().Exp) </th>
+        
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.EmpNo</td>
+            <td>@item.Name</td>
+            <td>@item.Exp</td>
+            <td class="text-center">
+                <a href="@Url.Action("Edit", new {item.EmpNo})" class="btn btn-warning">修改</a>
+
+                <input type="button" value="刪除" class="btn btn-danger" onclick="Delete('@item.EmpNo')" />
+                <a href="@Url.Action("Create", new {item.EmpNo, item.Name, item.Exp})" class="btn btn-success">新增</a>
+
+
+            </td>
+        </tr>
+    }
+</table>
